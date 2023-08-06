@@ -35,11 +35,10 @@ metadata:
 spec:
   selector:
     otel-trivago/app: echo
-  type: NodePort
+  type: ClusterIP
   ports:
     - protocol: TCP
       name: http
       port: 80
       targetPort: http
-      nodePort: 30005
 ---
