@@ -14,6 +14,7 @@ resources:
   - svc-jaeger.yaml
   - svc-echo.yaml
   - svc-prom.yaml
+  - svc-postgress.yaml
 
 patchesStrategicMerge:
   - ingress.yaml
@@ -29,3 +30,8 @@ patches:
       - op: replace
         path: /spec/rules/1/host
         value: room.otel-trivago.local
+
+secretGenerator:
+  - name: postgres-pwd
+    files:
+      - secrets/postgres-pwd

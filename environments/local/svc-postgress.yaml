@@ -1,0 +1,72 @@
+---
+kind: StatefulSet
+apiVersion: apps/v1
+metadata:
+  name: postgres
+spec:
+  serviceName: postgres
+  replicas: 1
+  selector:
+    matchLabels:
+      otel-trivago/db: postgres
+  template:
+    metadata:
+      labels:
+        otel-trivago/db: postgres
+        otel-trivago/allow-ingress: "default"
+    spec:
+      containers:
+        - name: postgres
+          imagePullPolicy: Always
+          image: docker.io/library/postgres:15.3-alpine
+          ports:
+            - containerPort: 5432
+              name: db
+          env:
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-pwd
+                  key: postgres-pwd
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: db
+      volumes:
+        - name: db
+          persistentVolumeClaim:
+            claimName: db
+  # pvc
+  volumeClaimTemplates:
+    - metadata:
+        name: db
+      spec:
+        storageClassName: local-storage
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 250Mi
+        selector:
+          matchLabels:
+            local-storage/type: "local-db"
+            local-storage/for: "postgres"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres
+  labels:
+    otel-trivago/db: postgres
+spec:
+  selector:
+    otel-trivago/db: postgres
+  clusterIP: None
+  ports:
+    - protocol: TCP
+      name: db
+      port: 5432
+      targetPort: db
+---
