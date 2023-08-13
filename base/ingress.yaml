@@ -53,4 +53,14 @@ spec:
                 name: room
                 port:
                   name: grpc
+    - host: stay-hostname
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: stay
+                port:
+                  name: grpc
 ---

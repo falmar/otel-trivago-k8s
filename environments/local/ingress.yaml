@@ -56,5 +56,6 @@ spec:
         - grpc.otel-trivago.local
         - reservation.otel-trivago.local
         - room.otel-trivago.local
+        - stay.otel-trivago.local
       secretName: grpc-ingress-cert
 ---
