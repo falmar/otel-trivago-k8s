@@ -63,4 +63,14 @@ spec:
                 name: stay
                 port:
                   name: grpc
+    - host: frontdesk-hostname
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontdesk
+                port:
+                  name: grpc
 ---

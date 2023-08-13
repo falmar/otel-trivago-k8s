@@ -32,5 +32,8 @@ patches:
       - op: replace
         path: /spec/rules/2/host
         value: stay.otel-trivago.local
+      - op: replace
+        path: /spec/rules/3/host
+        value: frontdesk.otel-trivago.local
 
 secretGenerator: []
