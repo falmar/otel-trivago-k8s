@@ -13,6 +13,10 @@ spec:
       labels:
         otel-trivago/app: echo
         otel-trivago/allow-ingress: "default"
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9090"
+        prometheus.io/path: "/metrics"
     spec:
       containers:
         - name: echo
