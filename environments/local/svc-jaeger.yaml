@@ -22,7 +22,7 @@ spec:
         - name: jaeger
           imagePullPolicy: Always
           image: jaegertracing/all-in-one:latest
-          command:
+          args:
             - "--metrics-backend=prometheus"
             - "--metrics-http-route=/metrics"
             - "--admin.http.host-port=9090"
