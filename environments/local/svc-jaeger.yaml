@@ -15,7 +15,7 @@ spec:
         otel-trivago/allow-ingress: "default"
       annotations:
         prometheus.io/scrape: "true"
-        prometheus.io/port: "9090"
+        prometheus.io/port: "14269"
         prometheus.io/path: "/metrics"
     spec:
       containers:
@@ -25,10 +25,10 @@ spec:
           args:
             - "--metrics-backend=prometheus"
             - "--metrics-http-route=/metrics"
-            - "--admin.http.host-port=9090"
+            - "--admin-http-port=14269"
           ports:
-            - containerPort: 9090
-              name: prom
+            - containerPort: 14269
+              name: admin
             - containerPort: 16686
               name: ui
             - containerPort: 4317
