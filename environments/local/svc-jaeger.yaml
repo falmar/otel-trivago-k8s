@@ -25,7 +25,7 @@ spec:
           args:
             - "--metrics-backend=prometheus"
             - "--metrics-http-route=/metrics"
-            - "--admin-http-port=14269"
+            - "--admin.http.host-port=:14269"
           ports:
             - containerPort: 14269
               name: admin
