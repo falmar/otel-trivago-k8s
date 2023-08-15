@@ -10,9 +10,8 @@ labels:
 resources:
   - ns.yaml
   - ../../base
-  - cert.yaml
+  - certs.yaml
   - svc-jaeger.yaml
-  - svc-echo.yaml
   - svc-prom.yaml
 
 patchesStrategicMerge:

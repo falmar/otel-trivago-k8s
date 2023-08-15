@@ -12,16 +12,6 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: www.otel-trivago.local
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: echo
-                port:
-                  name: http
     - host: jaeger.otel-trivago.local
       http:
         paths:
