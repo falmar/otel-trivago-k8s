@@ -1,27 +1,21 @@
----
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
 namespace: otel-trivago-local
 labels:
   - includeTemplates: true
     pairs:
-      otel-trivago/env: "local"
+      otel-trivago/env: local
 
 resources:
-  - ns.yaml
   - ../../base
   - certs.yaml
   - svc-jaeger.yaml
   - svc-prom.yaml
 
 patchesStrategicMerge:
+  - ns.yaml
   - ingress.yaml
 
 patches:
-  - target:
-      kind: Ingress
-      name: grpc
-    patch: |-
+  - patch: |-
       - op: replace
         path: /spec/rules/0/host
         value: reservation.otel-trivago.local
@@ -34,5 +28,6 @@ patches:
       - op: replace
         path: /spec/rules/3/host
         value: frontdesk.otel-trivago.local
-
-secretGenerator: []
+    target:
+      kind: Ingress
+      name: grpc

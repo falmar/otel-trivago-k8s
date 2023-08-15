@@ -12,20 +12,20 @@ spec:
     metadata:
       labels:
         otel-trivago/app: jaeger
-        otel-trivago/allow-ingress: "default"
+        otel-trivago/allow-ingress: default
       annotations:
         prometheus.io/scrape: "true"
         prometheus.io/port: "14269"
-        prometheus.io/path: "/metrics"
+        prometheus.io/path: /metrics
     spec:
       containers:
         - name: jaeger
           imagePullPolicy: Always
           image: jaegertracing/all-in-one:latest
           args:
-            - "--metrics-backend=prometheus"
-            - "--metrics-http-route=/metrics"
-            - "--admin.http.host-port=:14269"
+            - --metrics-backend=prometheus
+            - --metrics-http-route=/metrics
+            - --admin.http.host-port=:14269
           ports:
             - containerPort: 14269
               name: admin
@@ -33,8 +33,8 @@ spec:
               name: ui
             - containerPort: 4317
               name: otlp-grpc
----
 
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -52,4 +52,3 @@ spec:
       name: ui
       port: 80
       targetPort: ui
----

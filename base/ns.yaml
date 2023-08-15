@@ -3,4 +3,4 @@ kind: Namespace
 metadata:
   name: otel-trivago
   labels:
-    otel-trivago/env: "local"
+    otel-trivago/env: "production"

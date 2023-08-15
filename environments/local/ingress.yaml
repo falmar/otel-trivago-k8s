@@ -4,11 +4,11 @@ kind: Ingress
 metadata:
   name: http
   annotations:
-    cert-manager.io/issuer: "ca-issuer"
-    cert-manager.io/private-key-algorithm: "ECDSA"
+    cert-manager.io/issuer: ca-issuer
+    cert-manager.io/private-key-algorithm: ECDSA
     cert-manager.io/private-key-size: "256"
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    nginx.ingress.kubernetes.io/backend-protocol: HTTP
 spec:
   ingressClassName: nginx
   rules:
@@ -27,18 +27,18 @@ spec:
         - jaeger.otel-trivago.local
         - www.otel-trivago.local
       secretName: http-ingress-cert
----
 
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: grpc
   annotations:
-    cert-manager.io/issuer: "ca-issuer"
-    cert-manager.io/private-key-algorithm: "ECDSA"
+    cert-manager.io/issuer: ca-issuer
+    cert-manager.io/private-key-algorithm: ECDSA
     cert-manager.io/private-key-size: "256"
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
+    nginx.ingress.kubernetes.io/backend-protocol: GRPC
 spec:
   ingressClassName: nginx
   tls:
@@ -49,4 +49,3 @@ spec:
         - stay.otel-trivago.local
         - frontdesk.otel-trivago.local
       secretName: grpc-ingress-cert
----

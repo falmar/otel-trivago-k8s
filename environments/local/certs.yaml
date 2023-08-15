@@ -4,9 +4,9 @@ kind: Issuer
 metadata:
   name: selfsigned-issuer
 spec:
-  selfSigned: { }
----
+  selfSigned: {}
 
+---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
@@ -22,8 +22,8 @@ spec:
     name: selfsigned-issuer
     kind: Issuer
     group: cert-manager.io
----
 
+---
 apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
@@ -31,4 +31,3 @@ metadata:
 spec:
   ca:
     secretName: ca-certificate
----

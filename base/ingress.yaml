@@ -6,7 +6,7 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      otel-trivago/allow-ingress: "default"
+      otel-trivago/allow-ingress: default
   policyTypes:
     - Ingress
   ingress:
@@ -17,16 +17,14 @@ spec:
           podSelector:
             matchLabels:
               app.kubernetes.io/name: ingress-nginx
----
 
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: http
-spec:
-  rules: [ ]
----
 
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -73,4 +71,3 @@ spec:
                 name: frontdesk
                 port:
                   name: grpc
----
