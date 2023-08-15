@@ -1,4 +1,23 @@
 ---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: frontdesk-ingress
+spec:
+  podSelector:
+    matchLabels:
+      otel-trivago/app: "jaeger"
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              otel-trivago/grpc-otlp: "true"
+      ports:
+        - protocol: TCP
+          port: 4317
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
