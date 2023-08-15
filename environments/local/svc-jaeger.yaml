@@ -52,9 +52,3 @@ spec:
       name: ui
       port: 80
       targetPort: ui
-
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: test-argo
