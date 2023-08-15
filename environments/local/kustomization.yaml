@@ -1,4 +1,4 @@
-namespace: otel-trivago-local2
+namespace: otel-trivago-local
 labels:
   - includeTemplates: true
     pairs:
