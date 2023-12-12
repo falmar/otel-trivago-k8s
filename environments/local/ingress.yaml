@@ -4,7 +4,7 @@ kind: Ingress
 metadata:
   name: http
   annotations:
-    cert-manager.io/issuer: ca-issuer
+    cert-manager.io/cluster-issuer: ks8-local-issuer
     cert-manager.io/private-key-algorithm: ECDSA
     cert-manager.io/private-key-size: "256"
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
@@ -12,7 +12,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: jaeger.otel-trivago.local
+    - host: jaeger.otel-trivago.k8s.local
       http:
         paths:
           - path: /
@@ -24,8 +24,8 @@ spec:
                   name: ui
   tls:
     - hosts:
-        - jaeger.otel-trivago.local
-        - www.otel-trivago.local
+        - jaeger.otel-trivago.k8s.local
+        - www.otel-trivago.k8s.local
       secretName: http-ingress-cert
 
 ---
@@ -34,7 +34,7 @@ kind: Ingress
 metadata:
   name: grpc
   annotations:
-    cert-manager.io/issuer: ca-issuer
+    cert-manager.io/cluster-issuer: ks8-local-issuer
     cert-manager.io/private-key-algorithm: ECDSA
     cert-manager.io/private-key-size: "256"
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
@@ -43,9 +43,9 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - grpc.otel-trivago.local
-        - reservation.otel-trivago.local
-        - room.otel-trivago.local
-        - stay.otel-trivago.local
-        - frontdesk.otel-trivago.local
+        - grpc.otel-trivago.k8s.local
+        - reservation.otel-trivago.k8s.local
+        - room.otel-trivago.k8s.local
+        - stay.otel-trivago.k8s.local
+        - frontdesk.otel-trivago.k8s.local
       secretName: grpc-ingress-cert

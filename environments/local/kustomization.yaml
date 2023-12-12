@@ -5,7 +5,6 @@ labels:
 
 resources:
   - ../../base
-  - certs.yaml
   - svc-jaeger.yaml
   - svc-prom.yaml
 
@@ -16,16 +15,16 @@ patches:
   - patch: |-
       - op: replace
         path: /spec/rules/0/host
-        value: reservation.otel-trivago.local
+        value: reservation.otel-trivago.k8s.local
       - op: replace
         path: /spec/rules/1/host
-        value: room.otel-trivago.local
+        value: room.otel-trivago.k8s.local
       - op: replace
         path: /spec/rules/2/host
-        value: stay.otel-trivago.local
+        value: stay.otel-trivago.k8s.local
       - op: replace
         path: /spec/rules/3/host
-        value: frontdesk.otel-trivago.local
+        value: frontdesk.otel-trivago.k8s.local
     target:
       kind: Ingress
       name: grpc
