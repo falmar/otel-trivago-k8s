@@ -43,7 +43,6 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - grpc.otel-trivago.k8s.local
         - reservation.otel-trivago.k8s.local
         - room.otel-trivago.k8s.local
         - stay.otel-trivago.k8s.local
