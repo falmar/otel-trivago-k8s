@@ -9,7 +9,7 @@ spec:
 apiVersion: dns.loredns.k8s.lavieri.dev/v1
 kind: Record
 metadata:
-  name: reservation
+  name: reservation-otel-trivago
 spec:
   zone: otel-trivago.k8s.local
   name: reservation
@@ -19,7 +19,7 @@ spec:
 apiVersion: dns.loredns.k8s.lavieri.dev/v1
 kind: Record
 metadata:
-  name: room
+  name: room-otel-trivago
 spec:
   zone: otel-trivago.k8s.local
   name: room
