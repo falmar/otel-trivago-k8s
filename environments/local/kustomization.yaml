@@ -7,7 +7,6 @@ resources:
   - ../../base
   - svc-jaeger.yaml
   - svc-prom.yaml
-  - dns.yaml
 
 patchesStrategicMerge:
   - ingress.yaml
