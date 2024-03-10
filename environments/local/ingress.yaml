@@ -4,7 +4,7 @@ kind: Ingress
 metadata:
   name: http
   annotations:
-    cert-manager.io/cluster-issuer: ks8-local-issuer
+    cert-manager.io/cluster-issuer: k8s-local-issuer
     cert-manager.io/private-key-algorithm: ECDSA
     cert-manager.io/private-key-size: "256"
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
@@ -34,7 +34,7 @@ kind: Ingress
 metadata:
   name: grpc
   annotations:
-    cert-manager.io/cluster-issuer: ks8-local-issuer
+    cert-manager.io/cluster-issuer: k8s-local-issuer
     cert-manager.io/private-key-algorithm: ECDSA
     cert-manager.io/private-key-size: "256"
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
